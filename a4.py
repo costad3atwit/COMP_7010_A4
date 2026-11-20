@@ -4,18 +4,45 @@ import math
 # ========= PART A - Backtracking =========
 
 # A1. Sudoku Solver
-def parse(str:str):
-    #parse an 81 character string of numbers to populate the puzzle
+def parse(s:str):
+    grid = []
+    if len(s) != 81:
+        raise ValueError("input must be 81 digits long to fill the board properly")
+    for row in range(9):
+        grid.append([int(s[row*9 + col]) for col in range(9)])
     return grid
 
 def solve(grid, order="row"):
+
+    def is_complete(grid):
+        if grid.contains(0):
+            return False
+        else:
+            return True
+        
+    def is_legal(grid, x_pos):
+        if grid[x_pos[0]]
+    """
+    if grid is complete (contains no 0's)
+        report it
+        return True #found
+    for each option x (1-9)
+        if grid + x is legal
+            placements += 1
+            if solve(grid+x, placements):
+                return grid,placements #Stop
+    return False #backtrack
+    """
+    
     placements = 0
+    solution = None
     if(order == "row"):
         pass
     elif(order == "fewest"):
         pass
 
-
+    if(solution is None): 
+        return None
     return (solution, placements)
 
 def test_a1():
@@ -106,3 +133,9 @@ def test_b2():
 
 # done by hand, images included in pdf writeup
 
+if __name__ == "__main__":
+    arr = parse("014000356003000048050063100"
+          "000002004305010090192047060"
+          "407030005900006400500784200")
+    for row in arr:
+        print(*row)
